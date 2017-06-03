@@ -1,7 +1,7 @@
 # PersonalProject
 Summer Personal Project
 
-# ##Tecnologies used:
+## Tecnologies used:
 -Angular
 -node
 -mongoDb
