@@ -3,17 +3,17 @@
   <h1>
     {{title}}
   </h1>
-  <div *ngFor="let route of jsonData | keys ; ">
+  <div *ngFor="let route of routes | async ; ">
     {{route.name}}
     <br>
     {{route.per}}
 
-    <div *ngFor="let innerStop of route.stops | keys ; ">
+    <div *ngFor="let innerStop of route.stops ; ">
       {{innerStop.id}}
       {{innerStop.time_from_previous}}
 
     </div>
-    <div *ngFor="let inner of route.schedules | keys ; ">
+    <div *ngFor="let inner of route.schedules ; ">
       {{inner.weekly_days}}
     </div>
 
