@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BusApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
@@ -26,3 +27,12 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# PersonalProject
+Summer Personal Project
+
+## Tecnologies used:
+-Angular
+-node
+-mongoDb
+>>>>>>> 724c68dfb2c610f1d0c5b40e2cca499268dba2a9
