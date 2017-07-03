@@ -5,8 +5,6 @@
   </h1>
   <div *ngFor="let route of routes | async ; ">
     {{route.name}}
-    <br>
-    {{route.per}}
 
     <div *ngFor="let innerStop of route.stops ; ">
       {{innerStop.id}}

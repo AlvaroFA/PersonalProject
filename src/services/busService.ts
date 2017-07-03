@@ -14,7 +14,7 @@ export class BusService {
   // first use with model
   // doesnt works, maybe the problem its return data
   getRoutes(): Observable< Route[]> {
-    return this.http.get('./assets/data')
+    return this.http.get('http://localhost:3000/routes/')
       .map((res: Response) => {
         const routesmap: Route[] = <Route[]>res.json();
         return routesmap;
@@ -24,7 +24,7 @@ export class BusService {
   //este service funciona pero sin el modelado de datos
   //this service works but without data model
   getData() {
-    return this.http.get('./assets/data')
+    return this.http.get('http://localhost:3000/routes/')
       .map(res => res.json())
   }
 }

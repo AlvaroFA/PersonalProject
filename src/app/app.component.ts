@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-   this.routes = this.service.getData();
+   this.routes = this.service.getRoutes();
   }
 
 
