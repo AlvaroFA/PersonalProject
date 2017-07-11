@@ -1,15 +1,10 @@
 const fs = require('fs');
 
-var getAll=()=>{
-    return;
-
-}
-var fetchNotes = () => {
+var fetchRoutes = () => {
     return JSON.parse(fs.readFileSync('./public/data'));
 }
 
 module.exports={
-    getAll:getAll,
-    fetchNotes:fetchNotes
+    fetchRoutes:fetchRoutes
 
 }
