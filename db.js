@@ -18,5 +18,14 @@ module.exports = function(connectionLine){
     db.once('open',
         console.log.bind(console, 'conectado'));
 
+    var gracefulExit = function() {
+        db.close(function () {
+            console.log('Mongoose default connection with DB is disconnected through app termination');
+            process.exit(0);
+        });
+    };
+
+    // If the Node process ends, close the Mongoose connection
+    process.on('SIGINT', gracefulExit).on('SIGTERM', gracefulExit);
     return db;
 };
