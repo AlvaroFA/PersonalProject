@@ -36,27 +36,19 @@ app.use('/routes', (req, res) => {
 
 //retrieve all lines
 app.get('/lines', (req, res) => {
-    lines.find(dataToResponse(res,req)
+    lines.find(dataToResponse(res, req))
 });
 
 app.get('/stops/:str_stop/:end_stop', (req, res) => {
     let query = lines.find({ 'stops.name': req.params.name });
-    query.exec(dataToResponse(res,req))
+    query.exec(dataToResponse(res, req))
 });
 
 
 //retreieve all lines who have the stop request
 app.get('/stops/:name', (req, res) => {
     let query = lines.find({ 'stops.name': req.params.name });
-    query.exec(function (error, data) {
-        if (error) {
-            console.error(error);
-            res.status(500).send();
-        } else {
-
-            res.status(200).send(data);
-        }
-    });
+    query.exec(dataToResponse(req, res));
 });
 
 
@@ -64,14 +56,7 @@ app.get('/stops/:name', (req, res) => {
 app.get('/search/:stopName/', (req, res) => {
     let value = new RegExp(req.params.stopName, 'g');
     let query = lines.find({ 'stops.name': { $regex: value } }, { 'stops': 0 });
-    query.exec(function (error, data) {
-        if (error) {
-            console.error(error);
-            res.status(500).send();
-        } else {
-            res.status(200).send(data);
-        }
-    });
+    query.exec(dataToResponse(req, res));
 });
 
 
