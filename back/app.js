@@ -24,39 +24,31 @@ app.listen(port, (error) => {
 //middleware, resources
 app.use(express.static('public'));
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyparser.urlencoded({ extended: false }));
 
+
+// only for local file use
 app.use('/routes', (req, res) => {
     let routesFile = routes.fetchRoutes();
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).send(routesFile);
 });
 
+//retrieve all lines
 app.get('/lines', (req, res) => {
-    lines.find(function (error, data) {
-        if (error) {
-            console.error(error);
-            res.status(500).send();
-        } else {
-            res.status(200).send(data);
-        }
-    });
+    lines.find(dataToResponse(res,req)
 });
 
-app.get('/startline/:start', (req, res) => {
-    lines.find({start_line: req.params.start}).find(function (error, data) {
-        if (error) {
-            console.error(error);
-            res.status(500).send();
-        } else {
-
-            res.status(200).send(data);
-        }
-    });
+app.get('/stops/:str_stop/:end_stop', (req, res) => {
+    let query = lines.find({ 'stops.name': req.params.name });
+    query.exec(dataToResponse(res,req))
 });
 
+
+//retreieve all lines who have the stop request
 app.get('/stops/:name', (req, res) => {
-    lines.find({stops:{}}).where({name:req.params}).equals({}).find(function (error, data) {
+    let query = lines.find({ 'stops.name': req.params.name });
+    query.exec(function (error, data) {
         if (error) {
             console.error(error);
             res.status(500).send();
@@ -68,7 +60,36 @@ app.get('/stops/:name', (req, res) => {
 });
 
 
+//retrieve lines from stops partial text search
+app.get('/search/:stopName/', (req, res) => {
+    let value = new RegExp(req.params.stopName, 'g');
+    let query = lines.find({ 'stops.name': { $regex: value } }, { 'stops': 0 });
+    query.exec(function (error, data) {
+        if (error) {
+            console.error(error);
+            res.status(500).send();
+        } else {
+            res.status(200).send(data);
+        }
+    });
+});
 
 
+var dataToResponse = function (res, req) {
+    //if(developmerMode){
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    //}
+    return function (error, data) {
+        if (error) {
+            console.error(error);
+            res.status(500).send();
+        } else {
+            res.status(200).send(data);
+        }
+    }
+};
 
 
+app.get('/stops/', (req, res) => {
+    lines.find({ '_id': req.params.id }).find(dataToResponse(res, req));
+});
