@@ -32,13 +32,37 @@ app.use('/routes', (req, res) => {
     res.status(200).send(routesFile);
 });
 
-app.use('/db', (req, res) => {
+app.get('/lines', (req, res) => {
     lines.find(function (error, data) {
         if (error) {
             console.error(error);
             res.status(500).send();
         } else {
             res.setHeader('Access-Control-Allow-Origin', '*');
+            res.status(200).send(data);
+        }
+    });
+});
+
+app.get('/startline/:start', (req, res) => {
+    lines.find({start_line: req.params.start}).find(function (error, data) {
+        if (error) {
+            console.error(error);
+            res.status(500).send();
+        } else {
+
+            res.status(200).send(data);
+        }
+    });
+});
+
+app.get('/stops/:name', (req, res) => {
+    lines.find({stops:{}}).where({name:req.params}).equals({}).find(function (error, data) {
+        if (error) {
+            console.error(error);
+            res.status(500).send();
+        } else {
+
             res.status(200).send(data);
         }
     });

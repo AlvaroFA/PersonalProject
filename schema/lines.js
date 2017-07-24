@@ -3,6 +3,8 @@ const Schema= mon.Schema;
 
 var linesSchema = new Schema({
     id: String ,
+    start_line: String,
+    end_line: String,
     name: String ,
     schedules_description: String,
     stops:[{
@@ -14,6 +16,7 @@ var linesSchema = new Schema({
 
     }]
 })
+
 
 var lines= mon.model('lines', linesSchema);
 
