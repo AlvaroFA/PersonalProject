@@ -16,7 +16,7 @@ module.exports = function(connectionLine){
     db.on('error',
         console.error.bind(console, 'connection error:'));
     db.once('open',
-        console.log.bind(console, 'conectado'));
+        console.log.bind(console, 'conectado al server'));
 
     var gracefulExit = function() {
         db.close(function () {

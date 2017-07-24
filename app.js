@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // Use native promises
-const db = require('./db')('mongodb://localhost/busapp');
+const db = require('./db')('mongodb://localhost/busapp/lines');
 
 //launching server
 app.listen(port, (error) => {
@@ -38,7 +38,6 @@ app.get('/lines', (req, res) => {
             console.error(error);
             res.status(500).send();
         } else {
-            res.setHeader('Access-Control-Allow-Origin', '*');
             res.status(200).send(data);
         }
     });
