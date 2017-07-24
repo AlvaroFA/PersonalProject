@@ -1,16 +1,9 @@
-import {Schedule} from './schedule.model';
-import {Stops} from './stop.model';
-
 export class Route {
 
-  name: string;
-  stops: Stops[];
-  schedules: Schedule[];
+  name: String;
 
 
-  constructor(n: string, s: Stops[], sc: Schedule[]) {
+  constructor(n:String) {
     this.name = n;
-    this.stops = s;
-    this.schedules = sc;
   }
 }

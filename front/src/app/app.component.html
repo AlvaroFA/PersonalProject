@@ -5,16 +5,6 @@
   </h1>
   <div *ngFor="let route of routes | async ; ">
     {{route.name}}
-
-    <div *ngFor="let innerStop of route.stops ; ">
-      {{innerStop.id}}
-      {{innerStop.time_from_previous}}
-
-    </div>
-    <div *ngFor="let inner of route.schedules ; ">
-      {{inner.weekly_days}}
-    </div>
-
   </div>
 
 </div>
