@@ -27,3 +27,7 @@ tsconfig.json
 
 /app/enviroments/*
 
+#IDES
+
+.idea
+.vscode
