@@ -21,8 +21,6 @@ export class BusService {
       })
   }
 
-  //este service funciona pero sin el modelado de datos
-  //this service works but without data model
   getData() {
     return this.http.get('http://localhost:3000/routes/')
       .map(res => res.json())
