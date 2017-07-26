@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
 import { Route } from '../model/route.model';
-
+import { Stops } from '../model/stop.model';
 
 @Injectable()
 export class BusService {
@@ -20,6 +20,15 @@ export class BusService {
         const routesmap: Route[] = <Route[]>res.json();
         return routesmap;
       })
+  }
+
+  getDetails(id: String): Observable<Stops[]> {
+    return this.http.get('http://localhost:3000/lines/' + id)
+      .map((res: Response) => {
+        const stops: Stops[]= <Stops[]>res.json().stops;
+        return stops
+        ;
+      });
   }
 
   // test only

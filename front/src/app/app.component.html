@@ -1,10 +1,15 @@
 <!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
+<div>
   <h1>
     {{title}}
   </h1>
-  <div *ngFor="let route of routes | async ; ">
-    {{route.name}}
+  <ul>
+    <li *ngFor='let route of routes|async;'(click)="OnSelect(route._id)">
+      {{route.name}}
+    </li>
+  </ul>
+  <p>Resultados del del click arriba dado:</p>
+  <div *ngFor='let stop of stops_detail|async;'>
+    {{stop.name}}
   </div>
-
 </div>
