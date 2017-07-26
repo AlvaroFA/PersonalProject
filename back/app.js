@@ -36,8 +36,13 @@ app.use('/routes', (req, res) => {
 
 //retrieve all lines
 app.get('/lines', (req, res) => {
-    lines.find(dataToResponse(res, req))
+    lines.find({},{'stops':0},dataToResponse(res, req));    
 });
+
+app.get('/lines/:id', (req, res) => {
+    lines.findOne({'_id':req.params.id },{},dataToResponse(res, req));    
+});
+
 
 app.get('/stops/:str_stop/:end_stop', (req, res) => {
     let query = lines.find({ 'stops.name': req.params.name });
@@ -60,15 +65,19 @@ app.get('/search/:stopName/', (req, res) => {
 });
 
 
+
+
+
 var dataToResponse = function (res, req) {
     //if(developmerMode){
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     //}
     return function (error, data) {
         if (error) {
             console.error(error);
             res.status(500).send();
         } else {
+            res.setHeader('Access-Control-Allow-Origin', '*');
             res.status(200).send(data);
         }
     }
