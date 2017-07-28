@@ -1,23 +1,25 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
 import {BusService} from '../services/busService';
 import {HttpModule} from '@angular/http';
 import { KeysPipe} from '../model/test.pipe';
 import { NavBarComponent } from './common/nav-bar/nav-bar.component';
+import { ErrorComponent } from './errorComponent/error-component.component';
+import { HomeComponent } from './home-component/home-component.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
     KeysPipe,
-    NavBarComponent
+    NavBarComponent,
+    ErrorComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
   ],
-  bootstrap: [AppComponent
+  bootstrap: [
   ],
   providers: [
     BusService
