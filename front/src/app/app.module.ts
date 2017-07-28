@@ -4,12 +4,14 @@ import {AppComponent} from './app.component';
 import {BusService} from '../services/busService';
 import {HttpModule} from '@angular/http';
 import { KeysPipe} from '../model/test.pipe';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    KeysPipe
+    KeysPipe,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
