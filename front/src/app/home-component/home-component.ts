@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { BusService } from '../../services/busService';
 @Component({
   selector: 'app-bus',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './home-component.html',
+  styleUrls: ['./home-component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
   title: String;

@@ -1,32 +1,29 @@
 import { NgModule } from '@angular/core';
-import { RouterModule , Routes} from '@angular/router';
-
-import {ErrorComponent} from '../errorComponent/error-component.component';
-import {HomeComponent} from '../home-component/home-component.component';
-const appRoutes: Routes= [
-    RouterModule.forRoot([
-      { path: '',
-       redirectTo: '/home' 
-       },
-       { path: '/home',
-       component:HomeComponent
-       },
-      {path: 'search', 
-      component: SearchComponent},
-      {path:'now', 
-      component: NowComponent},
-      {path: '** ', 
-      component: ErrorComponent}
-
+import { RouterModule, Routes } from '@angular/router';
+import { ErrorComponent } from '../errorComponent/error-component';
+import { HomeComponent } from '../home-component/home-component';
+const appRoutes: Routes = [
+  RouterModule.forRoot([
+    {
+      path: '',
+      redirectTo: '/'
+    },
+    {
+      path: '/',
+      component: HomeComponent
+    },
+    {
+      path: '/pene ',
+      redirectTo: 'https://twitter.com/',
+      component: ErrorComponent
+    }
+    ])
 ]
-
-
 @NgModule({
   imports: [
     RouterModule.forRoot([appRoutes
-    ])
-  ],
-  exports:[
+    ])],
+  exports: [
     RouterModule
   ]
 })

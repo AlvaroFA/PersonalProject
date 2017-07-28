@@ -4,8 +4,9 @@ import {BusService} from '../services/busService';
 import {HttpModule} from '@angular/http';
 import { KeysPipe} from '../model/test.pipe';
 import { NavBarComponent } from './common/nav-bar/nav-bar.component';
-import { ErrorComponent } from './errorComponent/error-component.component';
-import { HomeComponent } from './home-component/home-component.component';
+import { ErrorComponent } from './errorComponent/error-component';
+import { HomeComponent } from './home-component/home-component';
+import {Router} from './common/app.routing.module';
 
 
 @NgModule({
@@ -13,13 +14,14 @@ import { HomeComponent } from './home-component/home-component.component';
     KeysPipe,
     NavBarComponent,
     ErrorComponent,
-    HomeComponent
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,
     HttpModule,
   ],
-  bootstrap: [
+  bootstrap: [HomeComponent
   ],
   providers: [
     BusService
