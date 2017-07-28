@@ -9,7 +9,18 @@
     </li>
   </ul>
   <p>Resultados del del click arriba dado:</p>
-  <div *ngFor='let stop of stops_detail|async;'>
-    {{stop.name}}
-  </div>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Disponible para bajar</th>
+      <th>Disponible para subir</th>
+      <th>Ciudad</th>
+    </tr>    
+    <tr *ngFor='let stop of stops_detail|async;'>
+    <td>{{stop.name}}</td>
+    <td>{{stop.to_get_on}}</td>
+    <td>{{stop.to_get_off}}</td>
+    <td>{{stop.region_name}}</td>
+    </tr>
+  </table>
 </div>
