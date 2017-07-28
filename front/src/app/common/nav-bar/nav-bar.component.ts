@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  opciones: string[];
-  constructor() {
-    this.opciones=['Home','Buscar'];
-  }
-
+  opciones = ['Inicio', 'Buscar', 'Now'];
 }
