@@ -13,7 +13,6 @@ export class BusService {
 
   // first use with model
   // doesnt works, maybe the problem its return data
-
   getRoutes(): Observable<Route[]> {
     return this.http.get('http://localhost:3000/lines/')
       .map((res: Response) => {
@@ -31,7 +30,15 @@ export class BusService {
       });
   }
 
-  // test only
+  getLinesBySearch(origin: string, destination: string): Observable<Route[]> {
+        return this.http.get('http://localhost:3000/'+origin+'/'+destination+'/')
+      .map((res: Response) => {
+        const route: Route[] = <Route[]>res.json().stops;
+        return route;
+        ;
+      });
+  }
+      // test only
   getData() {
     return this.http.get('http://localhost:3000/routes/')
       .map(res => res.json())
